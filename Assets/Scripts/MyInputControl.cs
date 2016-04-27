@@ -88,7 +88,7 @@ public class MyInputControl
     }
 
     public bool Start() {
-        for (int i=0; i<InputManager.Devices.Count; ++i) {
+        for (int i=0; i<4; ++i) {
             InputDevice device = InputManager.Devices[i];
             if (device.GetControl(InputControlType.Start).WasPressed)
                 return true;

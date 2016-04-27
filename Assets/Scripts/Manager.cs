@@ -172,7 +172,7 @@ public class Manager : MonoBehaviour
         // blinking tutorial text
         if(tutorialGUIText.enabled) Blink();
 
-        if(!tutorial && (MyInputControl.S.Start() || Input.GetKeyDown(KeyCode.Return))) {
+        if(!tutorial && (Input.GetButtonDown("start") || Input.GetKeyDown(KeyCode.Return))) {
             isPause = !isPause;
             if(isPause)
               Time.timeScale = 0;
