@@ -18,7 +18,7 @@ public class StartScreen : MonoBehaviour {
 			timePassed = 0;
 		}
 
-		if(MyInputControl.S.Start() || Input.GetKeyDown(KeyCode.Return)) {
+		if(Input.GetButtonDown("start") || Input.GetKeyDown(KeyCode.Return)) {
 			Application.LoadLevel("_SelectTeam");
 		}
 	}

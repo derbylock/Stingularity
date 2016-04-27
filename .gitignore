@@ -1,7 +1,7 @@
 .DS_Store
 stino.settings
 
-/[Ll]ibrary/
+[Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/

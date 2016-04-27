@@ -340,7 +340,7 @@ public class Manager : MonoBehaviour
             }
             tutorialGUIText.text = p.Key;
             for (int i=0; i<p.Value*20; ++i) {
-                if (MyInputControl.S.Start() || Input.GetKey(KeyCode.Return)) {
+                if (Input.GetButton("start") || Input.GetKey(KeyCode.Return)) {
                     StartGame();
                     yield break;
                 }
