@@ -82,7 +82,7 @@ public class Decoy : DropItem
 
     Player RandomEnemy() {
         List<Player> enemies = Manager.S.allPlayers.Where(p => p.team != fakePlayer.team).ToList();
-        int randIndex = (int)(Extensions.Rand * enemies.Count);
+        int randIndex = (int)(StingExtensions.Rand * enemies.Count);
         return enemies[randIndex];
     }
 

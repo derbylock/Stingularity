@@ -48,7 +48,7 @@ public class SelectTeam : MonoBehaviour {
 		}
 
 		// Blink Press Start when teams are ready
-		if(PlayerOptions.numPlayers >= 2 && (PlayerOptions.teamForPlayer.Count == PlayerOptions.numPlayers) ) {
+		if(PlayerOptions.numPlayers >= 1 && (PlayerOptions.teamForPlayer.Count == PlayerOptions.numPlayers) ) {
 			canPressStart = true;
 			timePassed += Time.deltaTime;
 			

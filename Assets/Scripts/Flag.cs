@@ -158,11 +158,11 @@ public class Flag : MonoBehaviour
 	}
 
 	void EmitPollenParticle() {
-		float size = Extensions.Rand;
+		float size = StingExtensions.Rand;
 		GameObject particle = Instantiate(Resources.Load("PollenParticle")) as GameObject;
 		particle.transform.position = transform.position;
 		particle.transform.localScale = new Vector3(size, size, size);
-		particle.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, Extensions.Rand*360f) * Vector2.up; //rand direction
+		particle.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, StingExtensions.Rand*360f) * Vector2.up; //rand direction
 		particle.transform.parent = currentScoreZone.transform;
 		pollens.Add(particle);
 	}

@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public static class Extensions
+public static class StingExtensions
 {
     private static System.Random random;
     public static float Rand {
