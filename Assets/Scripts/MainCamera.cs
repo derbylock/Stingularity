@@ -37,10 +37,10 @@ public class MainCamera : MonoBehaviour
             float newSize = Mathf.Max(maxX - minX, maxY - minY) / 2f;
             adjustedNewSize = Mathf.Clamp(newSize, minCameraSize, maxCameraSize);
         }
-        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, adjustedNewSize, cameraEasing);
+        GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, adjustedNewSize, cameraEasing);
 
-        Vector3 lastPos = camera.transform.position;
+        Vector3 lastPos = GetComponent<Camera>().transform.position;
         Vector3 newPos = new Vector3(Mathf.Lerp(minX, maxX, 0.5f), Mathf.Lerp(minY, maxY, 0.5f), -10);
-        camera.transform.position = Vector3.Lerp(lastPos, newPos, 0.1f);
+        GetComponent<Camera>().transform.position = Vector3.Lerp(lastPos, newPos, 0.1f);
     }
 }

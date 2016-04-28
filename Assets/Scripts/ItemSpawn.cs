@@ -24,13 +24,13 @@ public class ItemSpawn : MonoBehaviour {
 			Reset();
 		}
 		if (Time.time % 3 < 0.1) {
-			rigidbody2D.velocity = Quaternion.Euler(0,0, Extensions.Rand * 360) * Vector2.up * 10;
+			GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0,0, Extensions.Rand * 360) * Vector2.up * 10;
 		}
 	}
 
 	void Reset() {
 		spawnTime = Random.Range(10, 40);
-		rigidbody2D.velocity = Quaternion.Euler(0,0, Extensions.Rand * 360) * Vector2.up * 10;
+		GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0,0, Extensions.Rand * 360) * Vector2.up * 10;
 	}
 
 	void SpawnPickup(int number)

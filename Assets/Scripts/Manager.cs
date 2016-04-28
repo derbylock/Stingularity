@@ -227,7 +227,7 @@ public class Manager : MonoBehaviour
 
     private IEnumerator ScoreCoroutine(string team) {
         allPlayers.ForEach(p => p.Die());
-        flag.renderer.enabled = false;
+        flag.GetComponent<Renderer>().enabled = false;
         yield return new WaitForSeconds(1);        
         if (++teamScores[team] >= pointLimit) {
             countdownGUIText.enabled = countdownBackground.enabled = true;

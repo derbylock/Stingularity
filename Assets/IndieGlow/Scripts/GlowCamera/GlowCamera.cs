@@ -78,28 +78,28 @@ public class GlowCamera : MonoBehaviour
 		
         MiniMainCam = new GameObject("Mini Main Camera");
         MiniMainCam.AddComponent<Camera>();
-		MiniMainCam.camera.CopyFrom(gameObject.camera);
-        MiniMainCam.camera.depth = -3;
-        MiniMainCam.camera.clearFlags = CameraClearFlags.Skybox;
-        MiniMainCam.transform.position = gameObject.camera.transform.position;
-        MiniMainCam.transform.rotation = gameObject.camera.transform.rotation;
-        MiniMainCam.transform.parent = gameObject.camera.gameObject.transform;
-		MiniMainCam.camera.renderingPath = RenderingPath.VertexLit;
-		MiniMainCam.camera.enabled = false;
-        MiniMainCam.camera.pixelRect = new Rect(0, 0, Screen.width * Factor, Screen.height * Factor);
+		MiniMainCam.GetComponent<Camera>().CopyFrom(gameObject.GetComponent<Camera>());
+        MiniMainCam.GetComponent<Camera>().depth = -3;
+        MiniMainCam.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
+        MiniMainCam.transform.position = gameObject.GetComponent<Camera>().transform.position;
+        MiniMainCam.transform.rotation = gameObject.GetComponent<Camera>().transform.rotation;
+        MiniMainCam.transform.parent = gameObject.GetComponent<Camera>().gameObject.transform;
+		MiniMainCam.GetComponent<Camera>().renderingPath = RenderingPath.VertexLit;
+		MiniMainCam.GetComponent<Camera>().enabled = false;
+        MiniMainCam.GetComponent<Camera>().pixelRect = new Rect(0, 0, Screen.width * Factor, Screen.height * Factor);
         
         GlowCamObj = new GameObject("Glow Camera");
         GlowCamObj.AddComponent<Camera>();
-		GlowCamObj.camera.CopyFrom(gameObject.camera);
-        GlowCamObj.camera.depth = -2;
-        GlowCamObj.camera.cullingMask = 1 << glowObjectLayer;
-        GlowCamObj.camera.clearFlags = CameraClearFlags.Nothing;
-        GlowCamObj.transform.position = gameObject.camera.transform.position;
-        GlowCamObj.transform.rotation = gameObject.camera.transform.rotation;
-        GlowCamObj.transform.parent = gameObject.camera.gameObject.transform;
-		GlowCamObj.camera.renderingPath = RenderingPath.VertexLit;
-        GlowCamObj.camera.enabled = false;
-        GlowCamObj.camera.pixelRect = new Rect(0, 0, Screen.width * Factor, Screen.height * Factor);
+		GlowCamObj.GetComponent<Camera>().CopyFrom(gameObject.GetComponent<Camera>());
+        GlowCamObj.GetComponent<Camera>().depth = -2;
+        GlowCamObj.GetComponent<Camera>().cullingMask = 1 << glowObjectLayer;
+        GlowCamObj.GetComponent<Camera>().clearFlags = CameraClearFlags.Nothing;
+        GlowCamObj.transform.position = gameObject.GetComponent<Camera>().transform.position;
+        GlowCamObj.transform.rotation = gameObject.GetComponent<Camera>().transform.rotation;
+        GlowCamObj.transform.parent = gameObject.GetComponent<Camera>().gameObject.transform;
+		GlowCamObj.GetComponent<Camera>().renderingPath = RenderingPath.VertexLit;
+        GlowCamObj.GetComponent<Camera>().enabled = false;
+        GlowCamObj.GetComponent<Camera>().pixelRect = new Rect(0, 0, Screen.width * Factor, Screen.height * Factor);
 		
 		LastScreenResolution = GetScreenResolution();
 		
@@ -110,7 +110,7 @@ public class GlowCamera : MonoBehaviour
     }
 	
 	void RenderMiniMainCam() {
-		MiniMainCam.camera.Render();
+		MiniMainCam.GetComponent<Camera>().Render();
 	}
 	
 	void SetGlowMaterials() {
@@ -119,7 +119,7 @@ public class GlowCamera : MonoBehaviour
         	{
         		if (glo != null)
       			{
-					glo.gameObject.renderer.material = glo.GlowMaterial;
+					glo.gameObject.GetComponent<Renderer>().material = glo.GlowMaterial;
                     glo.gameObject.layer = glowObjectLayer;
      			}
   			}
@@ -128,7 +128,7 @@ public class GlowCamera : MonoBehaviour
 	
 	void RenderGlowCam() {
 		GL.Clear(false, true, Color.clear);
-  		GlowCamObj.camera.Render();
+  		GlowCamObj.GetComponent<Camera>().Render();
 	}
 	
 	void GrabGlowMask() {
@@ -143,7 +143,7 @@ public class GlowCamera : MonoBehaviour
    			{
  				if (glo != null)
 				{
-					glo.gameObject.renderer.material = glo.GetSourceMaterial;
+					glo.gameObject.GetComponent<Renderer>().material = glo.GetSourceMaterial;
 					glo.gameObject.layer = glo.GetSourceLayer;
      			}
  			}
@@ -199,22 +199,22 @@ public class GlowCamera : MonoBehaviour
     }
 	
 	void UpdateCameraSettings() {
-		if(!gameObject.camera.orthographic) {
-			MiniMainCam.camera.fov = gameObject.camera.fov;
-			MiniMainCam.camera.nearClipPlane = gameObject.camera.nearClipPlane;
-			MiniMainCam.camera.farClipPlane = gameObject.camera.farClipPlane;
+		if(!gameObject.GetComponent<Camera>().orthographic) {
+			MiniMainCam.GetComponent<Camera>().fov = gameObject.GetComponent<Camera>().fov;
+			MiniMainCam.GetComponent<Camera>().nearClipPlane = gameObject.GetComponent<Camera>().nearClipPlane;
+			MiniMainCam.GetComponent<Camera>().farClipPlane = gameObject.GetComponent<Camera>().farClipPlane;
 			
-			GlowCamObj.camera.fov = gameObject.camera.fov;
-			GlowCamObj.camera.nearClipPlane = gameObject.camera.nearClipPlane;
-			GlowCamObj.camera.farClipPlane = gameObject.camera.farClipPlane;
+			GlowCamObj.GetComponent<Camera>().fov = gameObject.GetComponent<Camera>().fov;
+			GlowCamObj.GetComponent<Camera>().nearClipPlane = gameObject.GetComponent<Camera>().nearClipPlane;
+			GlowCamObj.GetComponent<Camera>().farClipPlane = gameObject.GetComponent<Camera>().farClipPlane;
 		} else {
-			MiniMainCam.camera.orthographicSize = gameObject.camera.orthographicSize;
-			MiniMainCam.camera.nearClipPlane = gameObject.camera.nearClipPlane;
-			MiniMainCam.camera.farClipPlane = gameObject.camera.farClipPlane;
+			MiniMainCam.GetComponent<Camera>().orthographicSize = gameObject.GetComponent<Camera>().orthographicSize;
+			MiniMainCam.GetComponent<Camera>().nearClipPlane = gameObject.GetComponent<Camera>().nearClipPlane;
+			MiniMainCam.GetComponent<Camera>().farClipPlane = gameObject.GetComponent<Camera>().farClipPlane;
 			
-			GlowCamObj.camera.orthographicSize = gameObject.camera.orthographicSize;
-			GlowCamObj.camera.nearClipPlane = gameObject.camera.nearClipPlane;
-			GlowCamObj.camera.farClipPlane = gameObject.camera.farClipPlane;
+			GlowCamObj.GetComponent<Camera>().orthographicSize = gameObject.GetComponent<Camera>().orthographicSize;
+			GlowCamObj.GetComponent<Camera>().nearClipPlane = gameObject.GetComponent<Camera>().nearClipPlane;
+			GlowCamObj.GetComponent<Camera>().farClipPlane = gameObject.GetComponent<Camera>().farClipPlane;
 		}
 	}
 
@@ -341,8 +341,8 @@ public class GlowCamera : MonoBehaviour
         MaskShaderTexture.filterMode = FilterMode.Bilinear;
         MaskShaderTexture.wrapMode = TextureWrapMode.Clamp;
  
-        GlowCamObj.camera.pixelRect = new Rect(0, 0, Screen.width * Factor, Screen.height * Factor);
-        MiniMainCam.camera.pixelRect = new Rect(0, 0, Screen.width * Factor, Screen.height * Factor);
+        GlowCamObj.GetComponent<Camera>().pixelRect = new Rect(0, 0, Screen.width * Factor, Screen.height * Factor);
+        MiniMainCam.GetComponent<Camera>().pixelRect = new Rect(0, 0, Screen.width * Factor, Screen.height * Factor);
     }
 	
 	public static void ActivateGlowShader(bool active) {

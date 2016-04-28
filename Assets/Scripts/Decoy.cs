@@ -26,7 +26,7 @@ public class Decoy : DropItem
         GameObject go = Instantiate(owner.gameObject) as GameObject;
         fakePlayer = go.GetComponent<Player>();
 
-        fakePlayer.collider2D.sharedMaterial = physMat;
+        fakePlayer.GetComponent<Collider2D>().sharedMaterial = physMat;
         fakePlayer.canRespawn = false;
         fakePlayer.currentBoost = 1f;
         fakePlayer.flag = null;

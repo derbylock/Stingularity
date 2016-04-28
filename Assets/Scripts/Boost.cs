@@ -46,8 +46,8 @@ public class Boost : DropItem
         shadow.GetComponents<Behaviour>()
               .ToList()
               .ForEach(c => c.enabled = false);
-        shadow.collider2D.enabled = false;
-        shadow.rigidbody2D.isKinematic = true;
+        shadow.GetComponent<Collider2D>().enabled = false;
+        shadow.GetComponent<Rigidbody2D>().isKinematic = true;
 
         const int fadeOutSmoothness = 10;
         for (int i=fadeOutSmoothness; i>=0; i--) {

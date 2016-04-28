@@ -5,7 +5,7 @@ public class FlashLight : MonoBehaviour {
 	
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.F)) {
-			light.enabled = !light.enabled;
+			GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
 		}
 	}
 	

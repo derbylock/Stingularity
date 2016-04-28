@@ -14,7 +14,7 @@ public class StartScreen : MonoBehaviour {
 		if(timePassed > blinkTime) {
 			
 			GameObject pS = GameObject.FindGameObjectWithTag("pressStart");
-			pS.guiText.enabled = !pS.guiText.enabled;
+			pS.GetComponent<GUIText>().enabled = !pS.GetComponent<GUIText>().enabled;
 			timePassed = 0;
 		}
 

@@ -50,7 +50,7 @@ public class Flag : MonoBehaviour
 		transform.position = initialPosit;
 		carrier = null;
 		countdown = timeLimit;
-		renderer.enabled = true;
+		GetComponent<Renderer>().enabled = true;
 		currentScoreZone = null;
 	}
 
@@ -126,7 +126,7 @@ public class Flag : MonoBehaviour
 	}
 
 	void PlayExplodeEffect() {
-		particleSystem.Play();
+		GetComponent<ParticleSystem>().Play();
 	}
 
 	void UpdatePollenateEffect() {
@@ -146,7 +146,7 @@ public class Flag : MonoBehaviour
 			Vector2 toTarget = Vector2.one;
 			if (currentScoreZone) {
 				toTarget = (Vector2)currentScoreZone.transform.position - (Vector2)p.transform.position;
-				p.rigidbody2D.velocity = Vector2.Lerp(p.rigidbody2D.velocity.normalized, toTarget.normalized, 0.2f) * speed;
+				p.GetComponent<Rigidbody2D>().velocity = Vector2.Lerp(p.GetComponent<Rigidbody2D>().velocity.normalized, toTarget.normalized, 0.2f) * speed;
 			}
 			p.transform.localScale -= (Vector3.one * 0.002f);
 			if (toTarget.magnitude <= 0.05 || p.transform.localScale.x < 0.05) {
@@ -162,7 +162,7 @@ public class Flag : MonoBehaviour
 		GameObject particle = Instantiate(Resources.Load("PollenParticle")) as GameObject;
 		particle.transform.position = transform.position;
 		particle.transform.localScale = new Vector3(size, size, size);
-		particle.rigidbody2D.velocity = Quaternion.Euler(0, 0, Extensions.Rand*360f) * Vector2.up; //rand direction
+		particle.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, Extensions.Rand*360f) * Vector2.up; //rand direction
 		particle.transform.parent = currentScoreZone.transform;
 		pollens.Add(particle);
 	}

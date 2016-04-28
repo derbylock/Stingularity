@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
 			return;
 
 		if (hasKnockback) {
-			if (rigidbody2D.velocity.magnitude < 0.1f) {
+			if (GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f) {
 				//unset hasKnockback after we've stopped moving
 				hasKnockback = false;
 			}
@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
 			}
 			if (tackling) {
 				float tackleCurSpeed = tackleAveSpeed + (tackleAveSpeed * curve);
-				rigidbody2D.velocity = tackleDirection * tackleCurSpeed * currentBoost;
+				GetComponent<Rigidbody2D>().velocity = tackleDirection * tackleCurSpeed * currentBoost;
 				Turn(tackleDirection);
 			} 
 			else {
@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
 				bool moving = velocity.magnitude > 0.2f;
 				bool stopping = !moving && lastInputVelocity.magnitude > 0.1f;
 				if (moving || stopping) {
-					rigidbody2D.velocity = velocity.normalized * speed * currentBoost;
+					GetComponent<Rigidbody2D>().velocity = velocity.normalized * speed * currentBoost;
 					if (moving)
 						Turn(velocity);
 				}
@@ -216,13 +216,13 @@ public class Player : MonoBehaviour
 	{
 		dead = true;
 		spriteRenderer.enabled = false;
-		collider2D.enabled = false;
+		GetComponent<Collider2D>().enabled = false;
 		if (carrying) {
 			flag.Drop();
 		}
 		
-		particleSystem.startColor = Manager.S.teamColors[team];
-		particleSystem.Play();
+		GetComponent<ParticleSystem>().startColor = Manager.S.teamColors[team];
+		GetComponent<ParticleSystem>().Play();
 		AudioManager.Main.PlayNewSound ("YouDiedLol");
 		yield return new WaitForSeconds(respawnTime);
 		if (!canRespawn) {
@@ -238,7 +238,7 @@ public class Player : MonoBehaviour
 	public void Reset()
 	{
 		spriteRenderer.enabled = true;
-		collider2D.enabled = true;
+		GetComponent<Collider2D>().enabled = true;
 		dead = false;
 		if (spawnpoint) {
 			transform.position = spawnpoint.transform.position;
@@ -250,7 +250,7 @@ public class Player : MonoBehaviour
 			transform.position = initialPos;
 		}
 		flag = null;
-		rigidbody2D.velocity = Vector2.zero;
+		GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		itemNo = -1;
 		if (itemIcon)
 			Destroy (itemIcon);

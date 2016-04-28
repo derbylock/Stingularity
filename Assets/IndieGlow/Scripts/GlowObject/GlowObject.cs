@@ -17,7 +17,7 @@ public class GlowObject : MonoBehaviour {
 	
 	void Start ()
 	{
-		SourceMaterial = gameObject.renderer.material;
+		SourceMaterial = gameObject.GetComponent<Renderer>().material;
 		SourceLayer = gameObject.layer;
 	}
 	

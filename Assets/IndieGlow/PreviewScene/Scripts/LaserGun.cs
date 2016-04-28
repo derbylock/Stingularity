@@ -15,7 +15,7 @@ public class LaserGun : MonoBehaviour {
 			if(Input.GetMouseButton(0)) {
 				if(Time.time >= NextFireTime) {
 					Instantiate(LaserPrefab, transform.position, transform.rotation);
-					audio.PlayOneShot(LaserShootClip);
+					GetComponent<AudioSource>().PlayOneShot(LaserShootClip);
 					NextFireTime = Time.time + FireRate;
 				}
 			}

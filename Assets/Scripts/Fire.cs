@@ -18,7 +18,7 @@ public class Fire : DropItem {
 		base.Update();
 		Move();		
 		if (time >= safetime)
-			gameObject.renderer.material.color = Color.yellow;
+			gameObject.GetComponent<Renderer>().material.color = Color.yellow;
 	}
 
 	void Move() {

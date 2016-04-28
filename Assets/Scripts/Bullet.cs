@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     public string team;
 
     void Start() {
-        rigidbody2D.velocity = (Vector3)heading.normalized * speed;
+        GetComponent<Rigidbody2D>().velocity = (Vector3)heading.normalized * speed;
 		AudioManager.Main.PlayNewSound ("turret");
     }
 

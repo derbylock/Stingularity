@@ -63,9 +63,9 @@ public class Turret : DropItem
     public IEnumerator DieCoroutine()
     {
         dead = true;
-        renderer.enabled = false;
-        collider2D.enabled = false;
-        particleSystem.Play();
+        GetComponent<Renderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<ParticleSystem>().Play();
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }

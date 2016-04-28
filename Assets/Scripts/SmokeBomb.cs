@@ -18,9 +18,9 @@ public class SmokeBomb : DropItem {
 		transform.localScale += Vector3.one * speed * Time.deltaTime;
 
 		if (lifeTime <= fadeoutStartTime) {
-			Color color = gameObject.renderer.material.color;
+			Color color = gameObject.GetComponent<Renderer>().material.color;
 			color.a -= (1f/fadeoutStartTime) * Time.deltaTime;
-			gameObject.renderer.material.color = color;
+			gameObject.GetComponent<Renderer>().material.color = color;
 		}
     }
 

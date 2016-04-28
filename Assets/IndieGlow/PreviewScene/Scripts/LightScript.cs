@@ -11,7 +11,7 @@ public class LightScript : MonoBehaviour {
 	void Start () {
 		LightValue = Random.Range(0, 10);
 		LightTime = Time.time + Random.Range(0.05f, 0.1f);
-		GlowObj.SetActive(light.enabled);
+		GlowObj.SetActive(GetComponent<Light>().enabled);
 	}
 	
 	void Update () {
@@ -19,8 +19,8 @@ public class LightScript : MonoBehaviour {
 		if(Time.time > LightTime) {
 			LightTime = Time.time + Random.Range(0.05f, 0.1f);
 			if (LightValue == 0 || LightValue == 3 || LightValue == 9) {
-				light.enabled = !light.enabled;
-				GlowObj.SetActive(light.enabled);
+				GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
+				GlowObj.SetActive(GetComponent<Light>().enabled);
 			}
 		}
 	}
